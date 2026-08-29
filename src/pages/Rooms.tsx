@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useRoomStore } from "../store/useRoomStore";
+import RoomList from "../components/rooms/RoomList";
 
 export default function Rooms() {
   const { rooms, fetchRooms, loading } = useRoomStore();
@@ -9,10 +10,6 @@ export default function Rooms() {
 
     if (loading) return <p>Loading rooms</p>
   return (
-    <div>
-      {rooms.map((room) => (
-        <p key={room.id}>{room.name}</p>
-      ))}
-    </div>
+    <RoomList rooms={rooms} />
   );
 }

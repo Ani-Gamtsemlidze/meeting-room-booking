@@ -72,7 +72,7 @@
       "video-conference",
       "tv-screen"
     ],
-    "isAccessible": true,
+    "isAccessible": false,
     "status": "active"
   },
   {
