@@ -1,0 +1,170 @@
+[
+  {
+    "id": "booking-1",
+    "title": "Sprint Planning",
+    "description": "Bi-weekly sprint planning for the engineering team.",
+    "date": "2026-08-24",
+    "startTime": "09:00",
+    "endTime": "10:00",
+    "roomId": "room-3",
+    "organizerId": "employee-1",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-2",
+    "title": "Design Review",
+    "description": "Reviewing new onboarding flow mockups.",
+    "date": "2026-08-24",
+    "startTime": "11:00",
+    "endTime": "12:00",
+    "roomId": "room-2",
+    "organizerId": "employee-3",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-3",
+    "title": "1:1 with Manager",
+    "date": "2026-08-25",
+    "startTime": "14:00",
+    "endTime": "14:30",
+    "roomId": "room-1",
+    "organizerId": "employee-2",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-4",
+    "title": "Product Roadmap Sync",
+    "description": "Quarterly roadmap alignment across teams.",
+    "date": "2026-08-26",
+    "startTime": "10:00",
+    "endTime": "11:30",
+    "roomId": "room-4",
+    "organizerId": "employee-5",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-5",
+    "title": "Marketing Campaign Kickoff",
+    "date": "2026-08-26",
+    "startTime": "13:00",
+    "endTime": "14:00",
+    "roomId": "room-7",
+    "organizerId": "employee-7",
+    "status": "cancelled"
+  },
+  {
+    "id": "booking-6",
+    "title": "Interview: Senior Engineer",
+    "description": "Technical interview, second round.",
+    "date": "2026-08-27",
+    "startTime": "15:00",
+    "endTime": "16:00",
+    "roomId": "room-5",
+    "organizerId": "employee-1",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-7",
+    "title": "All-Hands Prep",
+    "date": "2026-08-27",
+    "startTime": "16:00",
+    "endTime": "17:00",
+    "roomId": "room-5",
+    "organizerId": "employee-11",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-8",
+    "title": "Sales Pipeline Review",
+    "description": "Reviewing Q3 pipeline and forecasts.",
+    "date": "2026-08-28",
+    "startTime": "09:30",
+    "endTime": "10:30",
+    "roomId": "room-4",
+    "organizerId": "employee-9",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-9",
+    "title": "Onboarding: New Hires",
+    "description": "HR onboarding session for August new hires.",
+    "date": "2026-08-29",
+    "startTime": "09:00",
+    "endTime": "10:30",
+    "roomId": "room-6",
+    "organizerId": "employee-12",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-10",
+    "title": "Client Demo",
+    "description": "Live product demo for a prospective client.",
+    "date": "2026-08-29",
+    "startTime": "11:00",
+    "endTime": "12:00",
+    "roomId": "room-4",
+    "organizerId": "employee-6",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-11",
+    "title": "Engineering Standup",
+    "date": "2026-08-29",
+    "startTime": "09:00",
+    "endTime": "09:15",
+    "roomId": "room-1",
+    "organizerId": "employee-2",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-12",
+    "title": "Design Critique",
+    "date": "2026-08-31",
+    "startTime": "10:00",
+    "endTime": "11:00",
+    "roomId": "room-2",
+    "organizerId": "employee-4",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-13",
+    "title": "Team Workshop",
+    "description": "Cross-functional workshop, requires large space.",
+    "date": "2026-09-01",
+    "startTime": "13:00",
+    "endTime": "16:00",
+    "roomId": "room-6",
+    "organizerId": "employee-5",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-14",
+    "title": "Weekly Marketing Sync",
+    "date": "2026-09-01",
+    "startTime": "09:00",
+    "endTime": "09:45",
+    "roomId": "room-7",
+    "organizerId": "employee-8",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-15",
+    "title": "HR Policy Review",
+    "date": "2026-09-02",
+    "startTime": "14:00",
+    "endTime": "15:00",
+    "roomId": "room-1",
+    "organizerId": "employee-11",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-16",
+    "title": "Interview: Product Designer",
+    "date": "2026-09-02",
+    "startTime": "15:30",
+    "endTime": "16:30",
+    "roomId": "room-3",
+    "organizerId": "employee-3",
+    "status": "confirmed"
+  }
+]

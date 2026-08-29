@@ -1,0 +1,100 @@
+[
+  {
+    "id": "room-1",
+    "name": "Orion",
+    "description": "A compact room for small team meetings and quick discussions.",
+    "type": "huddle",
+    "capacity": 4,
+    "floor": 1,
+    "amenities": ["whiteboard", "tv-screen"],
+    "isAccessible": true,
+    "status": "active"
+  },
+  {
+    "id": "room-2",
+    "name": "Nova",
+    "description": "A comfortable meeting room suited for team syncs and video calls.",
+    "type": "meeting",
+    "capacity": 6,
+    "floor": 1,
+    "amenities": ["whiteboard", "tv-screen", "video-conference"],
+    "isAccessible": true,
+    "status": "active"
+  },
+  {
+    "id": "room-3",
+    "name": "Atlas",
+    "description": "A versatile meeting space for collaborative sessions and presentations.",
+    "type": "meeting",
+    "capacity": 8,
+    "floor": 2,
+    "amenities": ["projector", "whiteboard", "video-conference"],
+    "isAccessible": true,
+    "status": "active"
+  },
+  {
+    "id": "room-4",
+    "name": "Apollo",
+    "description": "A spacious conference room designed for larger meetings and presentations.",
+    "type": "conference",
+    "capacity": 14,
+    "floor": 2,
+    "amenities": [
+      "projector",
+      "whiteboard",
+      "video-conference",
+      "tv-screen"
+    ],
+    "isAccessible": true,
+    "status": "active"
+  },
+  {
+    "id": "room-5",
+    "name": "Luna",
+    "description": "A quiet meeting room suitable for focused discussions and interviews.",
+    "type": "huddle",
+    "capacity": 4,
+    "floor": 2,
+    "amenities": ["whiteboard", "tv-screen"],
+    "isAccessible": false,
+    "status": "active"
+  },
+  {
+    "id": "room-6",
+    "name": "Aurora",
+    "description": "A large flexible space for workshops, training sessions and team events.",
+    "type": "training",
+    "capacity": 20,
+    "floor": 3,
+    "amenities": [
+      "projector",
+      "whiteboard",
+      "video-conference",
+      "tv-screen"
+    ],
+    "isAccessible": true,
+    "status": "active"
+  },
+  {
+    "id": "room-7",
+    "name": "Cosmos",
+    "description": "A medium-sized room for planning sessions, reviews and group discussions.",
+    "type": "meeting",
+    "capacity": 10,
+    "floor": 3,
+    "amenities": ["whiteboard", "video-conference", "tv-screen"],
+    "isAccessible": true,
+    "status": "active"
+  },
+  {
+    "id": "room-8",
+    "name": "Solaris",
+    "description": "A conference space for presentations and cross-team meetings.",
+    "type": "conference",
+    "capacity": 12,
+    "floor": 3,
+    "amenities": ["projector", "whiteboard", "video-conference"],
+    "isAccessible": true,
+    "status": "maintenance"
+  }
+]

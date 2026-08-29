@@ -1,0 +1,74 @@
+[
+  {
+    "id": "employee-1",
+    "name": "Emma Carter",
+    "email": "emma.carter@company.com",
+    "department": "Engineering"
+  },
+  {
+    "id": "employee-2",
+    "name": "Daniel Kim",
+    "email": "daniel.kim@company.com",
+    "department": "Engineering"
+  },
+  {
+    "id": "employee-3",
+    "name": "Maya Patel",
+    "email": "maya.patel@company.com",
+    "department": "Design"
+  },
+  {
+    "id": "employee-4",
+    "name": "Lucas Martin",
+    "email": "lucas.martin@company.com",
+    "department": "Design"
+  },
+  {
+    "id": "employee-5",
+    "name": "Sofia Bennett",
+    "email": "sofia.bennett@company.com",
+    "department": "Product"
+  },
+  {
+    "id": "employee-6",
+    "name": "Noah Wilson",
+    "email": "noah.wilson@company.com",
+    "department": "Product"
+  },
+  {
+    "id": "employee-7",
+    "name": "Olivia Reed",
+    "email": "olivia.reed@company.com",
+    "department": "Marketing"
+  },
+  {
+    "id": "employee-8",
+    "name": "Ethan Brooks",
+    "email": "ethan.brooks@company.com",
+    "department": "Marketing"
+  },
+  {
+    "id": "employee-9",
+    "name": "Chloe Adams",
+    "email": "chloe.adams@company.com",
+    "department": "Sales"
+  },
+  {
+    "id": "employee-10",
+    "name": "Liam Parker",
+    "email": "liam.parker@company.com",
+    "department": "Sales"
+  },
+  {
+    "id": "employee-11",
+    "name": "Grace Morgan",
+    "email": "grace.morgan@company.com",
+    "department": "HR"
+  },
+  {
+    "id": "employee-12",
+    "name": "Leo Thompson",
+    "email": "leo.thompson@company.com",
+    "department": "HR"
+  }
+]
