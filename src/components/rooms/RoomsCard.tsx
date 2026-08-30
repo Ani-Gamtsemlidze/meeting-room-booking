@@ -22,7 +22,12 @@ export default function RoomCard({ room }: RoomCardProps) {
   } as const;
   const RoomIcon = roomTypeIcons[room.type];
   return (
-    <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
+    <section
+      className={`rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md ${
+        room.status === "maintenance" ? "opacity-60" : ""
+      }`}
+    >
+      {" "}
       <div className="flex items-start gap-4">
         <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-blue-50">
           <RoomIcon size={24} className="text-blue-600" />
@@ -30,11 +35,10 @@ export default function RoomCard({ room }: RoomCardProps) {
 
         <div>
           <h2 className="text-lg font-semibold text-slate-950">{room.name}</h2>
-
           <p className="mt-1 text-sm text-slate-500">{room.type}</p>
         </div>
       </div>
-
+      <p className="mt-4 text-sm text-slate-600">{room.description}</p>
       <div className="mt-7 flex items-center gap-4 text-slate-600">
         <div className="flex items-center gap-2">
           <Users2 size={17} className="text-slate-500" />
@@ -52,7 +56,6 @@ export default function RoomCard({ room }: RoomCardProps) {
           </span>
         </div>
       </div>
-
       <div className="mt-5 flex flex-wrap gap-2">
         {room.amenities.map((amenity) => (
           <div
@@ -63,20 +66,25 @@ export default function RoomCard({ room }: RoomCardProps) {
           </div>
         ))}
       </div>
-
       {room.isAccessible && (
         <div className="flex items-center gap-1.5 text-sm mt-2 text-slate-600">
           <Accessibility size={16} />
           <span className="">Accessible</span>
         </div>
       )}
-
       <div className="mt-6 border-t border-slate-200 pt-5">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 text-emerald-600">
-            <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
-            <span className="text-sm font-medium">Available now</span>
-          </div>
+          {room.status === "active" ? (
+            <div className="flex items-center gap-2 text-emerald-600">
+              <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
+              <span className="text-sm font-medium">Available</span>
+            </div>
+          ) : (
+            <div className="flex items-center gap-2 text-amber-600">
+              <span className="h-2.5 w-2.5 rounded-full bg-amber-500" />
+              <span className="text-sm font-medium">Under maintenance</span>
+            </div>
+          )}
 
           <button
             type="button"
