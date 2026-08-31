@@ -14,21 +14,36 @@ function saveBookings(bookings: Booking[]): void {
   localStorage.setItem("bookings", JSON.stringify(bookings));
 }
 
-function timesOverlap(startA: string, endA: string, startB: string, endB: string): boolean {
+function timesOverlap(
+  startA: string,
+  endA: string,
+  startB: string,
+  endB: string,
+): boolean {
   return startA < endB && startB < endA;
 }
 
 function hasConflict(
-  newBooking: { roomId: string; date: string; startTime: string; endTime: string },
+  newBooking: {
+    roomId: string;
+    date: string;
+    startTime: string;
+    endTime: string;
+  },
   existingBookings: Booking[],
-  excludeId?: string
+  excludeId?: string,
 ): boolean {
   return existingBookings.some((booking) => {
     if (booking.id === excludeId) return false;
     if (booking.status === "cancelled") return false;
     if (booking.roomId !== newBooking.roomId) return false;
     if (booking.date !== newBooking.date) return false;
-    return timesOverlap(newBooking.startTime, newBooking.endTime, booking.startTime, booking.endTime);
+    return timesOverlap(
+      newBooking.startTime,
+      newBooking.endTime,
+      booking.startTime,
+      booking.endTime,
+    );
   });
 }
 
@@ -37,7 +52,7 @@ export async function getBookings(): Promise<Booking[]> {
 }
 
 export async function createBooking(
-  data: Omit<Booking, "id" | "status">
+  data: Omit<Booking, "id" | "status">,
 ): Promise<Booking> {
   const bookings = loadBookings();
 
@@ -54,4 +69,15 @@ export async function createBooking(
   bookings.push(newBooking);
   saveBookings(bookings);
   return newBooking;
+}
+
+export async function cancelBooking(id: string) {
+  const bookings = loadBookings();
+
+  const index = bookings.findIndex((b) => b.id === id);
+  if (index === -1) throw new Error("Booking not found");
+  const updated: Booking = { ...bookings[index], status: "cancelled" };
+  bookings[index] = updated;
+  saveBookings(bookings);
+  return updated;
 }
