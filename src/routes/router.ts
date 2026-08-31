@@ -5,6 +5,7 @@ import Rooms from "../pages/Rooms";
 import Bookings from "../pages/Bookings";
 import Schedule from "../pages/Schedule";
 import NotFound from "../pages/NotFound";
+import NewBooking from "../pages/NewBooking";
 
 export const router = createBrowserRouter([
   {
@@ -16,21 +17,24 @@ export const router = createBrowserRouter([
         Component: Dashboard,
       },
       {
-        path: "rooms" ,
+        path: "rooms",
         Component: Rooms,
       },
       {
-        path: "bookings" ,
-        Component: Bookings,
+        path: "bookings",
+        children: [
+          { index: true, Component: Bookings },
+          { path: "new", Component: NewBooking },
+        ],
       },
       {
-        path: "schedule" ,
+        path: "schedule",
         Component: Schedule,
       },
       {
         path: "*",
         Component: NotFound,
-      }
+      },
     ],
   },
 ]);
