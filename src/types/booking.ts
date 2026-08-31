@@ -11,3 +11,13 @@ export interface Booking {
     organizerId: string;
     status: BookingStatus;
 }
+
+export type BookingFormValues = {
+  title: string;
+  description: string;
+  date: string;
+  startTime: string;
+  duration: number;
+  roomId: string;
+  organizerId: string;
+};
