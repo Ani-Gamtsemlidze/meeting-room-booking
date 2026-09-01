@@ -81,3 +81,17 @@ export async function cancelBooking(id: string) {
   saveBookings(bookings);
   return updated;
 }
+
+export async function updateBooking(
+  id: string,
+  data: Partial<Booking>,
+): Promise<Booking> {
+  const bookings = loadBookings();
+
+  const index = bookings.findIndex((b) => b.id === id);
+  if (index === -1) throw new Error("Booking not found");
+  const updated: Booking = { ...bookings[index], ...data };
+  bookings[index] = updated;
+  saveBookings(bookings);
+  return updated;
+}

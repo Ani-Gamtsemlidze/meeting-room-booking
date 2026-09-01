@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { cancelBooking, createBooking, getBookings } from "../services/bookingsService";
+import { cancelBooking, createBooking, getBookings, updateBooking } from "../services/bookingsService";
 import type { Booking } from "../types";
 
 interface BookingState {
@@ -8,6 +8,7 @@ interface BookingState {
   fetchBookings: () => Promise<void>;
   createNewBooking: (data: Omit<Booking, "id" | "status">) => Promise<void>;
   cancelBookingById: (id: string) => Promise<void>;
+  updateBookingById: (id: string, data: Omit<Booking, "id" | "status">) => Promise<void>;
 }
 
 export const useBookingStore = create<BookingState>((set) => ({
@@ -26,5 +27,11 @@ export const useBookingStore = create<BookingState>((set) => ({
       set((state) => ({
       bookings: state.bookings.map((booking) => (booking.id === id ? updatedBookingStatus : booking)),
     }));
-  }
+  },
+  updateBookingById: async (id, data) => {
+    const updatedBooking = await updateBooking(id, data);
+    set((state) => ({
+      bookings: state.bookings.map((booking) => (booking.id === id ? updatedBooking : booking)),
+    }));
+  } 
 }));
