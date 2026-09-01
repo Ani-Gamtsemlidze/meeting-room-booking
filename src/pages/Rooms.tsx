@@ -16,7 +16,7 @@ export default function Rooms() {
   if (loading) return <p>Loading rooms</p>;
 
   return (
-    <div className="mx-auto w-full max-w-7xl  px-4 py-8 sm:px-6 lg:px-8">
+    <div className="mx-auto w-full max-w-6xl  px-4 py-8 sm:px-6 lg:px-8">
       <div className="mb-6">
         <h1 className="text-3xl font-bold tracking-tight text-slate-950">
           Meeting Rooms
@@ -26,9 +26,9 @@ export default function Rooms() {
           Find and book the perfect room for your meeting.
         </p>
       </div>
-      <div className="flex flex-col gap-3 lg:flex-row lg:items-center mb-4">
+      <div className="flex flex-col gap-3 lg:flex-row  mb-4">
         <div className="w-full lg:max-w-md">
-          <SearchInput value={filters.search} onChange={filters.setSearch} />
+          <SearchInput value={filters.search} onChange={filters.setSearch} placeholder="Search rooms" />
         </div>
         <RoomsFilter {...filters} />
       </div>
