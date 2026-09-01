@@ -9,20 +9,22 @@ import RoomSelector from "./RoomSelector";
 interface BookingFormProps {
   rooms: Room[];
   organizers: Employee[];
-  submit: (data: BookingFormValues) => void;
+  submit: (data: BookingFormValues) => Promise<void>;
+  defaultValues?: BookingFormValues;
 }
 
 export default function BookingForm({
   rooms,
   organizers,
   submit,
+  defaultValues,
 }: BookingFormProps) {
   const {
     register,
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<BookingFormValues>();
+  } = useForm<BookingFormValues>(defaultValues ? { defaultValues } : undefined);
 
   const onSubmit = (data: BookingFormValues) => {
     submit(data);
@@ -31,7 +33,7 @@ export default function BookingForm({
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="    rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
+      className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
     >
       <div className="space-y-8">
         <BookingDetailsFields register={register} errors={errors} />
@@ -50,21 +52,14 @@ export default function BookingForm({
 
         <RoomSelector rooms={rooms} control={control} errors={errors} />
 
-        <div className="flex flex-col border-t border-gray-100 pt-6 sm:flex-row sm:justify-between">
-          <button
-            type="button"
-            className="rounded-lg border border-gray-300 px-5 py-2.5 font-semibold text-gray-700 hover:bg-gray-50"
-          >
-            Cancel
-          </button>
-
+        <div className="flex flex-col border-t border-gray-100 pt-6 sm:flex-row sm:justify-end">
           <div className="flex justify-end gap-3">
             <button
               type="submit"
               className="inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-700 px-5 py-2.5 font-semibold text-white transition hover:bg-indigo-800"
             >
               <Calendar1 size={18} />
-              Create booking
+            { defaultValues ? "Update booking" : "Create booking" }
             </button>
           </div>
         </div>

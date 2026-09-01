@@ -37,7 +37,7 @@ export default function RoomSelector({
 
               return (
                 <RoomOptionCard
-                  key={room.id}
+                  key={room?.id}
                   room={room}
                   available={available}
                   selected={field.value === room.id}

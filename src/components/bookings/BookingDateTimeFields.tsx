@@ -40,9 +40,6 @@ export default function BookingDateTimeFields({
 
           <input
             type="time"
-            min="09:00"
-            max="18:00"
-            step={1800}
             {...register("startTime", {
               required: "Start Time is required",
             })}
