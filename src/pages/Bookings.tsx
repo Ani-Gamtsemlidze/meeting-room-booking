@@ -7,6 +7,9 @@ import { useRoomStore } from "../store/useRoomStore";
 import { useEmployeesStore } from "../store/useEmployeesStore";
 
 import BookingList from "../components/bookings/BookingList";
+import SearchInput from "../components/SearchInput";
+import { useBookingFilter } from "../hooks/useBookingFilter";
+import BookingsFilter from "../components/bookings/BookingsFilter";
 
 export default function Bookings() {
   const bookings = useBookingStore((state) => state.bookings);
@@ -17,6 +20,8 @@ export default function Bookings() {
 
   const employees = useEmployeesStore((state) => state.employees);
   const fetchEmployees = useEmployeesStore((state) => state.fetchEmployees);
+
+  const filters = useBookingFilter(bookings);
 
   useEffect(() => {
     fetchBookings();
@@ -45,9 +50,19 @@ export default function Bookings() {
           New booking
         </Link>
       </div>
+      <div className="flex flex-col gap-3 lg:flex-row  mb-4">
+        <div className="w-full lg:max-w-md">
+          <SearchInput
+            value={filters.search}
+            onChange={filters.setSearch}
+            placeholder="Search bookings"
+          />
+        </div>
+        <BookingsFilter {...filters} rooms={rooms} />
+      </div>
 
       <BookingList
-        bookings={bookings}
+        bookings={filters.filteredBookings}
         rooms={rooms}
         employees={employees}
       />

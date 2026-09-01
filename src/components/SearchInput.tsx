@@ -1,11 +1,16 @@
 import { Search } from "lucide-react";
 
-interface SearchProps  {
+interface SearchProps {
   value: string;
-  onChange: (value: string) => void
+  onChange: (value: string) => void;
+  placeholder?: string;
 }
 
-export default function SearchInput({value, onChange}: SearchProps) {
+export default function SearchInput({
+  value,
+  onChange,
+  placeholder,
+}: SearchProps) {
   return (
     <div className="relative">
       <Search
@@ -17,8 +22,8 @@ export default function SearchInput({value, onChange}: SearchProps) {
         type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        placeholder="search rooms"
-        className="rounded-xl text-sm w-full border bg-white border-slate-200 outline-none py-2.5 pr-4 pl-10"
+        placeholder={placeholder}
+        className="h-11 w-full rounded-xl border border-slate-200 bg-white pl-10 pr-4 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 hover:border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
       />
     </div>
   );
