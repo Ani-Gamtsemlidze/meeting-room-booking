@@ -45,7 +45,7 @@ export default function ScheduleCalendar({
       }}
       allDaySlot={false}
       slotMinTime="09:00:00"
-      slotMaxTime="18:00:00"
+      slotMaxTime="19:00:00"
       expandRows
       slotEventOverlap={false}
       height="auto"

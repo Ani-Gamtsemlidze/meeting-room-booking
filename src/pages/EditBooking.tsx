@@ -8,6 +8,7 @@ import { useBookingStore } from "../store/useBookingStore";
 import { calculateDuration, calculateEndTime } from "../utils/bookingTime";
 import type { BookingFormValues } from "../types";
 import { toast } from "sonner";
+import { isWithinOfficeHours } from "../utils/officeHours";
 
 export default function EditBooking() {
   const { id } = useParams();
@@ -45,6 +46,10 @@ const bookableRooms = rooms.filter(
   );
 
   async function handleUpdateBooking(data: BookingFormValues) {
+    if (!isWithinOfficeHours(data.startTime, calculateEndTime(data.startTime,data.duration))) {
+    toast.error("Bookings must be between 09:00 AM and 18:00 PM.");
+    return;
+  }
     try {
       await updateBookingById(booking!.id, {
         title: data.title,

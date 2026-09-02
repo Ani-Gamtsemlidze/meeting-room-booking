@@ -32,7 +32,7 @@ export default function BookingForm({
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(onSubmit) }noValidate
       className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm"
     >
       <div className="space-y-8">

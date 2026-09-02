@@ -8,6 +8,7 @@ import type { BookingFormValues } from "../types";
 import { calculateEndTime } from "../utils/bookingTime";
 import { ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
+import { isWithinOfficeHours } from "../utils/officeHours";
 
 export default function NewBooking() {
   const { rooms, fetchRooms } = useRoomStore();
@@ -25,6 +26,10 @@ export default function NewBooking() {
 
   const handleCreate = async (data: BookingFormValues) => {
     const endTime = calculateEndTime(data.startTime, data.duration);
+     if (!isWithinOfficeHours(data.startTime, endTime)) {
+    toast.error("Bookings must be between 09:00 AM and 18:00 PM.");
+    return;
+  }
 
     try {
       await createNewBooking({
