@@ -1,12 +1,36 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import type { Room } from "../types";
+import { useSearchParams } from "react-router-dom";
 
 export function useRoomsFilter(rooms: Room[]) {
-  const [search, setSearch] = useState("");
-  const [capacity, setCapacity] = useState("");
-  const [type, setType] = useState("");
-  const [floor, setFloor] = useState("");
-  const [accessibleOnly, setAccessibleOnly] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const search = searchParams.get("search") ?? "";
+  const capacity = searchParams.get("capacity") ?? "";
+  const type = searchParams.get("type") ?? "";
+  const floor = searchParams.get("floor") ?? "";
+  const accessibleOnly = searchParams.get("accessible") === "true";
+
+  function setParam(key: string, value: string | boolean) {
+    setSearchParams((prev) => {
+      const next = new URLSearchParams(prev);
+      const isEmpty =
+        value === "" || value === false || value === undefined;
+
+      if (isEmpty) {
+        next.delete(key);
+      } else {
+        next.set(key, String(value));
+      }
+      return next;
+    });
+  }
+
+  const setSearch = (value: string) => setParam("search", value);
+  const setCapacity = (value: string) => setParam("capacity", value);
+  const setType = (value: string) => setParam("type", value);
+  const setFloor = (value: string) => setParam("floor", value);
+  const setAccessibleOnly = (value: boolean) => setParam("accessible", value);
 
   const filteredRooms = useMemo(() => {
     return rooms.filter((room) => {
@@ -21,12 +45,9 @@ export function useRoomsFilter(rooms: Room[]) {
   }, [rooms, search, capacity, type, floor, accessibleOnly]);
 
   function resetFilters() {
-    setSearch("");
-    setCapacity("");
-    setType("");
-    setFloor("");
-    setAccessibleOnly(false);
+    setSearchParams({});
   }
+
   return {
     search,
     setSearch,
