@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { ArrowLeft, Clock3 } from "lucide-react";
 
 import { useBookingStore } from "../store/useBookingStore";
@@ -20,6 +20,12 @@ export default function BookingDetail() {
   const employees = useEmployeesStore((state) => state.employees);
   const fetchEmployees = useEmployeesStore((state) => state.fetchEmployees);
   const cancelBookingById = useBookingStore((state) => state.cancelBookingById);
+
+  const location = useLocation();
+
+  const backTo = location.state?.from || "/bookings";
+  const backLabel =
+  backTo === "/schedule" ? "Back to schedule" : "Back to bookings";
 
   useEffect(() => {
     fetchBookings();
@@ -78,11 +84,12 @@ export default function BookingDetail() {
   return (
     <div className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
       <Link
-        to="/bookings"
+        to={backTo}
+        state={location.state}
         className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition hover:text-slate-900"
       >
         <ArrowLeft size={18} />
-        Back to bookings
+        {backLabel}
       </Link>
 
       <article className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
