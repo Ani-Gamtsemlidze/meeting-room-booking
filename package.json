@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fullcalendar/react": "^7.0.2",
     "@tailwindcss/vite": "^4.3.3",
     "lucide": "^1.37.0",
     "lucide-react": "^1.37.0",
@@ -19,6 +20,7 @@
     "react-router-dom": "^7.18.3",
     "sonner": "^2.0.8",
     "tailwindcss": "^4.3.3",
+    "temporal-polyfill": "^1.0.4",
     "zustand": "^5.0.15"
   },
   "devDependencies": {
