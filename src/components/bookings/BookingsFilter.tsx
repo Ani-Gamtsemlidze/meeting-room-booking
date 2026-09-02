@@ -46,6 +46,7 @@ export default function BookingsFilter({
           <option value="upcoming">Upcoming</option>
           <option value="past">Past</option>
           <option value="all">All bookings</option>
+          <option value="inprogress">in progress</option>
         </select>
       </div>
 
@@ -62,7 +63,7 @@ export default function BookingsFilter({
         >
           <option value="">Any status</option>
           <option value="confirmed">Confirmed</option>
-          <option value="cancelled">Cancelled</option>
+          <option value="cancelled">Canceled</option>
         </select>
       </div>
 

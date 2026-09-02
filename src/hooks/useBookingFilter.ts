@@ -1,5 +1,6 @@
 import type { Booking } from "../types";
 import { useSearchParams } from "react-router-dom";
+import { getBookingDisplayStatus } from "../utils/bookingStatus";
 
 export function useBookingFilter(bookings: Booking[]) {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -87,6 +88,12 @@ export function useBookingFilter(bookings: Booking[]) {
     if (dateFilter === "past" && bookingDateTime >= now) {
       return false;
     }
+    if (
+      dateFilter === "inprogress" &&
+      getBookingDisplayStatus(booking) !== "in-progress"
+    ) {
+      return false;
+    }
     if (statusFilter && booking.status !== statusFilter) {
       return false;
     }
@@ -95,14 +102,7 @@ export function useBookingFilter(bookings: Booking[]) {
   });
 
   function resetBookingFilter() {
-    setSearchParams((prev) => {
-      const next = new URLSearchParams(prev);
-      next.delete("search");
-      next.delete("room");
-      next.delete("date");
-      next.delete("status");
-      return next;
-    });
+    setSearchParams({});
   }
 
   return {
