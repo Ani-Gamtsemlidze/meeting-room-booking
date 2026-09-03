@@ -41,7 +41,7 @@ export default function TodayBookings({ bookings, rooms }: TodayBookingsProps) {
           No bookings scheduled for today.
         </p>
       ) : (
-        <div className="space-y-3">
+        <div className="space-y-3 overflow-y-auto max-h-[420px]">
           {todayBookings.map((booking) => {
             const status = getBookingDisplayStatus(booking);
             const room = rooms.find((room) => room.id === booking.roomId);
@@ -50,10 +50,10 @@ export default function TodayBookings({ bookings, rooms }: TodayBookingsProps) {
               <Link
                 key={booking.id}
                 to={`/bookings/${booking.id}`}
-                className="flex justify-between items-center gap-4 rounded-xl border border-slate-100 p-4 transition hover:bg-slate-50"
+                className="flex flex-col gap-3 rounded-xl border border-slate-100 p-3 transition hover:bg-slate-50 sm:flex-row sm:items-center sm:justify-between sm:p-4"
               >
-                <div className="flex items-center gap-4">
-                  <div className="w-24 shrink-0">
+                <div className="flex min-w-0 items-start gap-3">
+                  <div className="w-14 shrink-0 sm:w-24">
                     <p className="text-sm font-semibold text-slate-900">
                       {booking.startTime}
                     </p>
@@ -61,18 +61,19 @@ export default function TodayBookings({ bookings, rooms }: TodayBookingsProps) {
                     <p className="text-xs text-slate-500">{booking.endTime}</p>
                   </div>
 
-                  <div className="min-w-0">
-                    <p className="truncate font-semibold text-slate-900">
+                  <div className="min-w-0 flex-1">
+                    <p className="break-words text-sm font-semibold text-slate-900 sm:truncate sm:text-base">
                       {booking.title}
                     </p>
 
-                    <p className="text-sm text-slate-500">
+                    <p className="text-xs text-slate-500 sm:text-sm">
                       {room?.name ?? "Unknown room"}
                     </p>
                   </div>
                 </div>
+
                 <div
-                  className={`inline-flex items-center justify-end rounded-full px-2.5 py-1 text-xs font-semibold ${
+                  className={`inline-flex w-fit items-center rounded-full px-2.5 py-1 text-xs font-semibold ${
                     status === "completed"
                       ? "bg-slate-100 text-slate-600"
                       : status === "in-progress"
@@ -83,7 +84,7 @@ export default function TodayBookings({ bookings, rooms }: TodayBookingsProps) {
                   }`}
                 >
                   <span
-                    className={`h-2 w-2 rounded-full mr-2 ${
+                    className={`mr-2 h-2 w-2 rounded-full ${
                       status === "completed"
                         ? "bg-slate-400"
                         : status === "in-progress"
@@ -93,6 +94,7 @@ export default function TodayBookings({ bookings, rooms }: TodayBookingsProps) {
                             : "bg-red-500"
                     }`}
                   />
+
                   {status === "in-progress"
                     ? "In progress"
                     : status === "upcoming"
