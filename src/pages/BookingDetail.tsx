@@ -4,14 +4,18 @@ import { ArrowLeft, Clock3 } from "lucide-react";
 import { useBookingStore } from "../store/useBookingStore";
 import { useRoomStore } from "../store/useRoomStore";
 import { useEmployeesStore } from "../store/useEmployeesStore";
-import { toast } from "sonner";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import BookingDetailHeader from "../components/bookings/details/BookingDetailHeader";
 import BookingDetailActions from "../components/bookings/details/BookingDetailActions";
 import BookingDetailSections from "../components/bookings/details/BookingDetailSections";
+import { ConfirmModal } from "../components/ConfirmModal";
 
 export default function BookingDetail() {
   const { id } = useParams();
+
+  const [showCancelConfirm, setShowCancelConfirm] = useState(false);
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const bookings = useBookingStore((state) => state.bookings);
   const fetchBookings = useBookingStore((state) => state.fetchBookings);
@@ -25,7 +29,7 @@ export default function BookingDetail() {
 
   const backTo = location.state?.from || "/bookings";
   const backLabel =
-  backTo === "/schedule" ? "Back to schedule" : "Back to bookings";
+    backTo === "/schedule" ? "Back to schedule" : "Back to bookings";
 
   useEffect(() => {
     fetchBookings();
@@ -65,55 +69,70 @@ export default function BookingDetail() {
     (employee) => employee.id === booking.organizerId,
   );
 
-  const isCancelled = booking.status === "cancelled";
+  const isCanceled = booking.status === "canceled";
 
   async function handleCancel() {
-    if (!window.confirm("Cancel this booking?")) return;
+    setIsSubmitting(true);
     try {
       await cancelBookingById(booking!.id);
-      toast.success("Booking cancelled");
-    } catch (err) {
-      const message =
-        err instanceof Error ? err.message : "Something went wrong";
-      toast.error(message);
+    } finally {
+      setIsSubmitting(false);
+      setShowCancelConfirm(false);
     }
   }
   const bookingDateTime = new Date(`${booking.date}T${booking.startTime}`);
   const isPast = bookingDateTime < new Date();
 
   return (
-    <div className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
-      <Link
-        to={backTo}
-        state={location.state}
-        className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition hover:text-slate-900"
-      >
-        <ArrowLeft size={18} />
-        {backLabel}
-      </Link>
-
-      <article className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-        <BookingDetailHeader
-          isCancelled={isCancelled}
-          room={room}
-          booking={booking}
+    <>
+      {showCancelConfirm && (
+        <ConfirmModal
+          open={showCancelConfirm}
+          title="Cancel this booking?"
+          description="This booking will be marked as canceled but kept in the records."
+          onConfirm={handleCancel}
+          onCancel={() => setShowCancelConfirm(false)}
+          confirmLabel="Cancel booking"
+          isSubmitting={isSubmitting}
         />
+      )}
 
-        <BookingDetailSections
-          booking={booking}
-          room={room}
-          organizer={organizer}
-        />
-        {!isCancelled && !isPast && (
-          <BookingDetailActions booking={booking} handleCancel={handleCancel} />
-        )}
-        {isPast && !isCancelled && (
-          <div className="mt-4 flex items-center gap-2 rounded-lg bg-slate-50 px-4 py-3 text-sm text-slate-500">
-            <Clock3 size={16} className="text-slate-400" />
-            This meeting has already taken place.
-          </div>
-        )}
-      </article>
-    </div>
+      <div className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
+        <Link
+          to={backTo}
+          state={location.state}
+          className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition hover:text-slate-900"
+        >
+          <ArrowLeft size={18} />
+          {backLabel}
+        </Link>
+
+        <article className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <BookingDetailHeader
+            isCanceled={isCanceled}
+            room={room}
+            booking={booking}
+          />
+
+          <BookingDetailSections
+            booking={booking}
+            room={room}
+            organizer={organizer}
+          />
+          {!isCanceled && !isPast && (
+            <BookingDetailActions
+              booking={booking}
+              setShowCancelConfirm={setShowCancelConfirm}
+            />
+          )}
+          {isPast && !isCanceled && (
+            <div className="mt-4 flex items-center gap-2 rounded-lg bg-slate-50 px-4 py-3 text-sm text-slate-500">
+              <Clock3 size={16} className="text-slate-400" />
+              This meeting has already taken place.
+            </div>
+          )}
+        </article>
+      </div>
+    </>
   );
 }
