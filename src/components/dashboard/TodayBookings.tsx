@@ -9,11 +9,11 @@ type TodayBookingsProps = {
 
 export default function TodayBookings({ bookings, rooms }: TodayBookingsProps) {
   const todayBookings = bookings
-  .filter((booking) => {
-    const today = new Date();
-    const bookingDate = new Date(booking.date);
-    return bookingDate.toDateString() === today.toDateString();
-  })
+    .filter((booking) => {
+      const today = new Date();
+      const bookingDate = new Date(booking.date);
+      return bookingDate.toDateString() === today.toDateString();
+    })
     .sort((a, b) => {
       const aStart = new Date(`${a.date}T${a.startTime}`);
       const bStart = new Date(`${b.date}T${b.startTime}`);
@@ -36,71 +36,76 @@ export default function TodayBookings({ bookings, rooms }: TodayBookingsProps) {
           View schedule
         </Link>
       </div>
+      {todayBookings.length === 0 ? (
+        <p className="py-6 text-center text-sm text-slate-400">
+          No bookings scheduled for today.
+        </p>
+      ) : (
+        <div className="space-y-3">
+          {todayBookings.map((booking) => {
+            const status = getBookingDisplayStatus(booking);
+            const room = rooms.find((room) => room.id === booking.roomId);
 
-      <div className="space-y-3">
-        {todayBookings.map((booking) => {
-          const status = getBookingDisplayStatus(booking)
-          const room = rooms.find((room) => room.id === booking.roomId);
-
-          return (
-            <Link
-              key={booking.id}
-              to={`/bookings/${booking.id}`}
-              className="flex justify-between items-center gap-4 rounded-xl border border-slate-100 p-4 transition hover:bg-slate-50"
-            >
-              <div className="flex items-center gap-4">
-                <div className="w-24 shrink-0">
-                  <p className="text-sm font-semibold text-slate-900">
-                    {booking.startTime}
-                  </p>
-
-                  <p className="text-xs text-slate-500">{booking.endTime}</p>
-                </div>
-
-                <div className="min-w-0">
-                  <p className="truncate font-semibold text-slate-900">
-                    {booking.title}
-                  </p>
-
-                  <p className="text-sm text-slate-500">
-                    {room?.name ?? "Unknown room"}
-                  </p>
-                </div>
-              </div>
-              <div
-                className={`inline-flex items-center justify-end rounded-full px-2.5 py-1 text-xs font-semibold ${
-                  status === "completed"
-                    ? "bg-slate-100 text-slate-600"
-                    : status === "in-progress"
-                      ? "bg-emerald-100 text-emerald-700"
-                      : status === "upcoming"
-                        ? "bg-indigo-100 text-indigo-700"
-                        : "bg-red-100 text-red-700"
-                }`}
+            return (
+              <Link
+                key={booking.id}
+                to={`/bookings/${booking.id}`}
+                className="flex justify-between items-center gap-4 rounded-xl border border-slate-100 p-4 transition hover:bg-slate-50"
               >
-                <span
-                  className={`h-2 w-2 rounded-full mr-2 ${
+                <div className="flex items-center gap-4">
+                  <div className="w-24 shrink-0">
+                    <p className="text-sm font-semibold text-slate-900">
+                      {booking.startTime}
+                    </p>
+
+                    <p className="text-xs text-slate-500">{booking.endTime}</p>
+                  </div>
+
+                  <div className="min-w-0">
+                    <p className="truncate font-semibold text-slate-900">
+                      {booking.title}
+                    </p>
+
+                    <p className="text-sm text-slate-500">
+                      {room?.name ?? "Unknown room"}
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className={`inline-flex items-center justify-end rounded-full px-2.5 py-1 text-xs font-semibold ${
                     status === "completed"
-                      ? "bg-slate-400"
+                      ? "bg-slate-100 text-slate-600"
                       : status === "in-progress"
-                        ? "bg-emerald-500"
+                        ? "bg-emerald-100 text-emerald-700"
                         : status === "upcoming"
-                          ? "bg-indigo-500"
-                          : "bg-red-500"
+                          ? "bg-indigo-100 text-indigo-700"
+                          : "bg-red-100 text-red-700"
                   }`}
-                />
-                {status === "in-progress"
-                  ? "In progress"
-                  : status === "upcoming"
-                    ? "Upcoming"
-                    : status === "completed"
-                      ? "Completed"
-                      : "Canceled"}
-              </div>
-            </Link>
-          );
-        })}
-      </div>
+                >
+                  <span
+                    className={`h-2 w-2 rounded-full mr-2 ${
+                      status === "completed"
+                        ? "bg-slate-400"
+                        : status === "in-progress"
+                          ? "bg-emerald-500"
+                          : status === "upcoming"
+                            ? "bg-indigo-500"
+                            : "bg-red-500"
+                    }`}
+                  />
+                  {status === "in-progress"
+                    ? "In progress"
+                    : status === "upcoming"
+                      ? "Upcoming"
+                      : status === "completed"
+                        ? "Completed"
+                        : "Canceled"}
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      )}
     </section>
   );
 }
