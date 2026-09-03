@@ -3,9 +3,9 @@ import type { Booking, Room } from "../../../types";
 interface BookingDetailHeaderProps {
   booking: Booking;
   room?: Room;
-  isCancelled: boolean;
+  isCanceled: boolean;
 }
-export default function BookingDetailHeader({ isCancelled, room, booking }: BookingDetailHeaderProps) {
+export default function BookingDetailHeader({ isCanceled, room, booking }: BookingDetailHeaderProps) {
     return (
           <div className="border-b border-slate-100 p-6 sm:p-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
@@ -13,18 +13,18 @@ export default function BookingDetailHeader({ isCancelled, room, booking }: Book
               <div className="mb-3 flex flex-wrap items-center gap-2">
                 <span
                   className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ${
-                    isCancelled
+                    isCanceled
                       ? "bg-red-50 text-red-700"
                       : "bg-emerald-50 text-emerald-700"
                   }`}
                 >
                   <span
                     className={`h-2 w-2 rounded-full ${
-                      isCancelled ? "bg-red-500" : "bg-emerald-500"
+                      isCanceled ? "bg-red-500" : "bg-emerald-500"
                     }`}
                   />
 
-                  {isCancelled ? "Cancelled" : "Confirmed"}
+                  {isCanceled ? "Canceled" : "Confirmed"}
                 </span>
 
                 {room && (

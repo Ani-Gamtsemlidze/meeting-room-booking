@@ -7,7 +7,7 @@ export type BookingDisplayStatus =
   | "upcoming";
 
 export function getBookingDisplayStatus(booking: Booking): BookingDisplayStatus {
-  if (booking.status === "cancelled") return "canceled";
+  if (booking.status === "canceled") return "canceled";
 
   const now = new Date();
   const start = new Date(`${booking.date}T${booking.startTime}`);

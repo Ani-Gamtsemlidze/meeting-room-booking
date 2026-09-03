@@ -26,7 +26,7 @@ export default function Schedule() {
   }, [fetchBookings, fetchRooms]);
 
   const events = bookings
-    .filter((booking) => booking.status !== "cancelled")
+    .filter((booking) => booking.status !== "canceled")
     .map((booking) => bookingToEvent(booking, rooms));
 
   const isMobileWeek = isMobile && mobileView === "timeGridWeek";

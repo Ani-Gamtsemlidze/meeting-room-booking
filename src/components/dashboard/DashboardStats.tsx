@@ -27,7 +27,7 @@ export function DashboardStats({
 
   const todaysBookings = bookings.filter(
     (booking) =>
-      booking.status !== "cancelled" &&
+      booking.status !== "canceled" &&
       new Date(booking.date).toDateString() === now.toDateString(),
   );
 
@@ -36,7 +36,7 @@ export function DashboardStats({
 
   const upcomingBookings = bookings.filter(
     (booking) =>
-      booking.status !== "cancelled" &&
+      booking.status !== "canceled" &&
       new Date(`${booking.date}T${booking.startTime}`) >= startOfTomorrow,
   );
 

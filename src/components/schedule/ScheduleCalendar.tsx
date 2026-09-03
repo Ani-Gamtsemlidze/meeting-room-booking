@@ -51,19 +51,27 @@ export default function ScheduleCalendar({
       height="auto"
       contentHeight="auto"
       events={events}
-      eventContent={(arg) => (
-        <div className="h-full w-full min-w-0 overflow-hidden px-1.5 py-1">
-          <div className="truncate text-[10px] font-semibold uppercase tracking-wide text-white/90">
-            {arg.event.extendedProps.roomName}
+      eventContent={(arg) => {
+        const start = arg.event.start;
+        const end = arg.event.end;
+
+        const durationMinutes =
+          start && end ? (end.getTime() - start.getTime()) / 60000 : 0;
+
+        const isThirtyMinutes = durationMinutes <= 30;
+
+        return (
+          <div className="min-w-0 px-1 py-0.5">
+            <div className="truncate text-[11px] font-semibold leading-tight">
+              {arg.event.title}
+            </div>
+
+            {!isThirtyMinutes && (
+              <div className="text-[10px] opacity-80">{arg.timeText}</div>
+            )}
           </div>
-          <div className="truncate text-xs font-semibold leading-tight text-white">
-            {arg.event.title}
-          </div>
-          <div className="hidden text-[10px] text-white/70 sm:block">
-            {arg.timeText}
-          </div>
-        </div>
-      )}
+        );
+      }}
       eventClick={(info) => {
         navigate(`/bookings/${info.event.id}`, {
           state: { from: "/schedule" },

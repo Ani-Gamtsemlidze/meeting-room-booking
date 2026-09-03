@@ -35,7 +35,7 @@ function hasConflict(
 ): boolean {
   return existingBookings.some((booking) => {
     if (booking.id === excludeId) return false;
-    if (booking.status === "cancelled") return false;
+    if (booking.status === "canceled") return false;
     if (booking.roomId !== newBooking.roomId) return false;
     if (booking.date !== newBooking.date) return false;
     return timesOverlap(
@@ -76,7 +76,7 @@ export async function cancelBooking(id: string) {
 
   const index = bookings.findIndex((b) => b.id === id);
   if (index === -1) throw new Error("Booking not found");
-  const updated: Booking = { ...bookings[index], status: "cancelled" };
+  const updated: Booking = { ...bookings[index], status: "canceled" };
   bookings[index] = updated;
   saveBookings(bookings);
   return updated;

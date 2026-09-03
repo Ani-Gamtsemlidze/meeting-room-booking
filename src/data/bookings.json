@@ -50,7 +50,7 @@
     "endTime": "14:00",
     "roomId": "room-7",
     "organizerId": "employee-7",
-    "status": "cancelled"
+    "status": "canceled"
   },
   {
     "id": "booking-6",
@@ -165,6 +165,208 @@
     "endTime": "16:30",
     "roomId": "room-3",
     "organizerId": "employee-3",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-17",
+    "title": "Morning Standup",
+    "description": "Daily engineering sync.",
+    "date": "2026-09-03",
+    "startTime": "09:00",
+    "endTime": "09:15",
+    "roomId": "room-1",
+    "organizerId": "employee-2",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-18",
+    "title": "Budget Review Q3",
+    "description": "Finance review with department heads.",
+    "date": "2026-09-03",
+    "startTime": "10:00",
+    "endTime": "11:00",
+    "roomId": "room-2",
+    "organizerId": "employee-9",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-19",
+    "title": "Customer Support Sync",
+    "date": "2026-09-03",
+    "startTime": "13:30",
+    "endTime": "14:15",
+    "roomId": "room-3",
+    "organizerId": "employee-7",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-20",
+    "title": "Legal Contract Review",
+    "description": "Reviewing vendor agreement terms.",
+    "date": "2026-09-03",
+    "startTime": "15:00",
+    "endTime": "16:00",
+    "roomId": "room-4",
+    "organizerId": "employee-6",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-21",
+    "title": "Late Afternoon Brainstorm",
+    "description": "Marketing creative session.",
+    "date": "2026-09-03",
+    "startTime": "16:30",
+    "endTime": "17:30",
+    "roomId": "room-7",
+    "organizerId": "employee-8",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-22",
+    "title": "Canceled Vendor Call",
+    "date": "2026-09-03",
+    "startTime": "12:00",
+    "endTime": "12:30",
+    "roomId": "room-5",
+    "organizerId": "employee-1",
+    "status": "canceled"
+  },
+  {
+    "id": "booking-23",
+    "title": "Frontend Guild Meeting",
+    "description": "Monthly frontend chapter sync.",
+    "date": "2026-09-04",
+    "startTime": "09:30",
+    "endTime": "10:30",
+    "roomId": "room-1",
+    "organizerId": "employee-4",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-24",
+    "title": "Investor Update Call",
+    "description": "Monthly investor briefing.",
+    "date": "2026-09-04",
+    "startTime": "11:00",
+    "endTime": "12:00",
+    "roomId": "room-4",
+    "organizerId": "employee-5",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-25",
+    "title": "Interview: Backend Engineer",
+    "date": "2026-09-04",
+    "startTime": "14:00",
+    "endTime": "15:00",
+    "roomId": "room-3",
+    "organizerId": "employee-2",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-26",
+    "title": "Team Lunch & Learn",
+    "description": "Internal tech talk over lunch.",
+    "date": "2026-09-04",
+    "startTime": "12:00",
+    "endTime": "13:00",
+    "roomId": "room-6",
+    "organizerId": "employee-11",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-27",
+    "title": "Security Audit Debrief",
+    "date": "2026-09-05",
+    "startTime": "09:00",
+    "endTime": "10:00",
+    "roomId": "room-2",
+    "organizerId": "employee-9",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-28",
+    "title": "Product Design Crit",
+    "description": "Weekly design critique session.",
+    "date": "2026-09-05",
+    "startTime": "10:30",
+    "endTime": "11:30",
+    "roomId": "room-2",
+    "organizerId": "employee-3",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-29",
+    "title": "Sales Team Retro",
+    "date": "2026-09-05",
+    "startTime": "14:30",
+    "endTime": "15:30",
+    "roomId": "room-4",
+    "organizerId": "employee-6",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-30",
+    "title": "New Hire Orientation",
+    "description": "Full-day onboarding for September cohort.",
+    "date": "2026-09-08",
+    "startTime": "09:00",
+    "endTime": "12:00",
+    "roomId": "room-6",
+    "organizerId": "employee-12",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-31",
+    "title": "Quarterly All-Hands",
+    "description": "Company-wide quarterly update.",
+    "date": "2026-09-08",
+    "startTime": "13:00",
+    "endTime": "14:30",
+    "roomId": "room-6",
+    "organizerId": "employee-11",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-32",
+    "title": "Client Onboarding Call",
+    "date": "2026-09-09",
+    "startTime": "10:00",
+    "endTime": "11:00",
+    "roomId": "room-1",
+    "organizerId": "employee-7",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-33",
+    "title": "Engineering Retrospective",
+    "description": "Sprint retro for the platform team.",
+    "date": "2026-09-09",
+    "startTime": "15:00",
+    "endTime": "16:00",
+    "roomId": "room-3",
+    "organizerId": "employee-1",
+    "status": "confirmed"
+  },
+  {
+    "id": "booking-34",
+    "title": "Canceled Design Workshop",
+    "date": "2026-09-10",
+    "startTime": "09:00",
+    "endTime": "11:00",
+    "roomId": "room-6",
+    "organizerId": "employee-4",
+    "status": "canceled"
+  },
+  {
+    "id": "booking-35",
+    "title": "Partnership Strategy Meeting",
+    "description": "Discussing Q4 partnership opportunities.",
+    "date": "2026-09-10",
+    "startTime": "11:30",
+    "endTime": "12:30",
+    "roomId": "room-4",
+    "organizerId": "employee-5",
     "status": "confirmed"
   }
 ]

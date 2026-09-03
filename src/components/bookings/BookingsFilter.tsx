@@ -63,7 +63,7 @@ export default function BookingsFilter({
         >
           <option value="">Any status</option>
           <option value="confirmed">Confirmed</option>
-          <option value="cancelled">Canceled</option>
+          <option value="canceled">Canceled</option>
         </select>
       </div>
 

@@ -31,7 +31,7 @@ export default function BookingCard({
   organizer,
 }: BookingCardProps) {
   const RoomIcon = room ? roomTypeIcons[room.type] : Users2;
-  const isCancelled = booking.status === "cancelled";
+  const isCanceled = booking.status === "canceled";
 
   return (
     <Link
@@ -49,18 +49,18 @@ export default function BookingCard({
               <div className="mb-2 flex flex-wrap items-center gap-2">
                 <span
                   className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold ${
-                    isCancelled
+                    isCanceled
                       ? "bg-red-50 text-red-700"
                       : "bg-emerald-50 text-emerald-700"
                   }`}
                 >
                   <span
                     className={`h-2 w-2 rounded-full ${
-                      isCancelled ? "bg-red-500" : "bg-emerald-500"
+                      isCanceled ? "bg-red-500" : "bg-emerald-500"
                     }`}
                   />
 
-                  {isCancelled ? "Cancelled" : "Confirmed"}
+                  {isCanceled ? "Canceled" : "Confirmed"}
                 </span>
 
                 {room && (
