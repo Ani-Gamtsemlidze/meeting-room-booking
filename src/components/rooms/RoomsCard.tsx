@@ -1,6 +1,5 @@
 import {
   Accessibility,
-  ChevronRight,
   GraduationCap,
   MapPin,
   Presentation,
@@ -77,7 +76,7 @@ export default function RoomCard({ room }: RoomCardProps) {
           {room.status === "active" ? (
             <div className="flex items-center gap-2 text-emerald-600">
               <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
-              <span className="text-sm font-medium">Available</span>
+              <span className="text-sm font-medium">active</span>
             </div>
           ) : (
             <div className="flex items-center gap-2 text-amber-600">
@@ -85,14 +84,6 @@ export default function RoomCard({ room }: RoomCardProps) {
               <span className="text-sm font-medium">Under maintenance</span>
             </div>
           )}
-
-          <button
-            type="button"
-            className="flex items-center gap-1 text-sm font-semibold text-blue-600 transition-colors hover:text-blue-700"
-          >
-            View availability
-            <ChevronRight size={18} />
-          </button>
         </div>
       </div>
     </section>

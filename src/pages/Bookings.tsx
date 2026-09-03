@@ -10,16 +10,22 @@ import BookingList from "../components/bookings/BookingList";
 import SearchInput from "../components/SearchInput";
 import { useBookingFilter } from "../hooks/useBookingFilter";
 import BookingsFilter from "../components/bookings/BookingsFilter";
+import LoadingState from "../components/LoadingState";
 
 export default function Bookings() {
-  const bookings = useBookingStore((state) => state.bookings);
+   const bookings = useBookingStore((state) => state.bookings);
   const fetchBookings = useBookingStore((state) => state.fetchBookings);
+  const bookingsLoading = useBookingStore((state) => state.loading);
 
   const rooms = useRoomStore((state) => state.rooms);
   const fetchRooms = useRoomStore((state) => state.fetchRooms);
+  const roomsLoading = useRoomStore((state) => state.loading);
 
   const employees = useEmployeesStore((state) => state.employees);
   const fetchEmployees = useEmployeesStore((state) => state.fetchEmployees);
+  const employeesLoading = useEmployeesStore((state) => state.loading);
+
+  const isLoading = bookingsLoading || roomsLoading || employeesLoading;
 
   const filters = useBookingFilter(bookings);
 
@@ -60,12 +66,16 @@ export default function Bookings() {
         </div>
         <BookingsFilter {...filters} rooms={rooms} />
       </div>
+      <LoadingState loading={isLoading} >
 
       <BookingList
         bookings={filters.filteredBookings}
         rooms={rooms}
         employees={employees}
       />
+
+      </LoadingState>
+
     </div>
   );
 }
