@@ -4,6 +4,7 @@ import {
   DoorOpen,
   CalendarClock,
   CalendarDays,
+  PlusCircleIcon
 } from "lucide-react";
 
 const navItems = [
@@ -11,6 +12,7 @@ const navItems = [
   { to: "/rooms", label: "Rooms", icon: DoorOpen },
   { to: "/bookings", label: "Bookings", icon: CalendarClock },
   { to: "/schedule", label: "Schedule", icon: CalendarDays },
+  { to: "/bookings/new", label: "Book a Room", icon: PlusCircleIcon },
 ];
 
 export default function Header() {
