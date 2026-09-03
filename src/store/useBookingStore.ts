@@ -15,9 +15,15 @@ export const useBookingStore = create<BookingState>((set) => ({
   bookings: [],
   loading: true,
   fetchBookings: async () => {
-    const data = await getBookings();
-    set({ bookings: data, loading: false });
-  },
+  set({ loading: true });
+
+  try {
+    const bookings = await getBookings();
+    set({ bookings });
+  } finally {
+    set({ loading: false });
+  }
+},
   createNewBooking: async (data) => {
     const newBooking = await createBooking(data);
     set((state) => ({ bookings: [...state.bookings, newBooking] }));
